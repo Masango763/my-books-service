@@ -1,0 +1,23 @@
+{
+  "name": "my-books-service",
+  "version": "1.0.0",
+  "description": "CSE 341 Web Services - Week 01 Books API built with Express, MVC, and MongoDB",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env server.js",
+    "dev": "nodemon --env-file=.env server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongodb": "^6.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "nodemon": "^3.1.14"
+  }
+}
