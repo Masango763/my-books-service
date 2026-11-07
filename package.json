@@ -14,7 +14,9 @@
   "license": "MIT",
   "dependencies": {
     "express": "^5.2.1",
-    "mongodb": "^6.0.0"
+    "mongodb": "^6.0.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "eslint": "^9.0.0",

@@ -1,24 +1,31 @@
 import { MongoClient } from 'mongodb';
+import dotenv from 'dotenv';
 
-let database;
+dotenv.config();
 
-const connectToDb = async () => {
-  const connectionString = process.env.MONGODB_URI;
-  if (!connectionString) {
-    throw new Error('MONGODB_URI is required.');
+let _db;
+
+const initDb = (callback) => {
+  if (_db) {
+    console.log('Database is already initialized!');
+    return callback(null, _db);
   }
-
-  const client = new MongoClient(connectionString);
-  await client.connect();
-  database = client.db(process.env.MONGODB_DB_NAME || 'cse341-books-db');
-  return database;
+  MongoClient.connect(process.env.MONGODB_URI)
+    .then((client) => {
+      _db = client.db();
+      console.log('Successfully connected to MongoDB Atlas');
+      callback(null, _db);
+    })
+    .catch((err) => {
+      callback(err);
+    });
 };
 
 const getDb = () => {
-  if (!database) {
-    throw new Error('Database not initialized. Call connectToDb first.');
+  if (!_db) {
+    throw Error('Database not initialized');
   }
-  return database;
+  return _db;
 };
 
-export { connectToDb, getDb };
+export { initDb, getDb };
