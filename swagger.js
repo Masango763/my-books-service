@@ -1,15 +1,15 @@
-import swaggerAutogen from 'swagger-autogen';
+const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
     title: 'Books and Authors API',
-    description: 'CSE 341 Web Services - Books and Authors API',
+    description: 'CSE 341 API Documentation',
   },
-  host: 'localhost:3000',
-  schemes: ['http', 'https'],
+  host: 'my-books-service.onrender.com',
+  schemes: ['https'],
 };
 
-const outputFile = './swagger-output.json';
-const endpointsFiles = ['./src/router.js'];
+const outputFile = './swagger.json';
+const endpointsFiles = ['./server.js'];
 
-swaggerAutogen()(outputFile, endpointsFiles, doc);
+swaggerAutogen(outputFile, endpointsFiles, doc);
